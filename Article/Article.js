@@ -140,7 +140,7 @@ function createComponent(h2, arrDate, p1, p2, p3) {
   date.classList.add('date')
   button.classList.add('expandButton')
 
-  button.textContent = '/u25bc'
+  button.textContent = '\u058D'
   title.textContent = h2
   date.textContent = arrDate
   para1.textContent = p1

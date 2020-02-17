@@ -85,6 +85,13 @@ const data = [
     thirdParagraph: `Hodor hodor - hodor... Hodor hodor hodor hodor. Hodor. Hodor! Hodor hodor, hodor hodor hodor hodor hodor; hodor hodor? Hodor!
           Hodor hodor, HODOR hodor, hodor hodor?! Hodor! Hodor hodor, HODOR hodor, hodor hodor, hodor, hodor hodor. Hodor, hodor.
           Hodor. Hodor, hodor, hodor. Hodor hodor... Hodor hodor hodor?! Hodor, hodor... Hodor hodor HODOR hodor, hodor hodor. Hodor.`
+  },
+  {
+    title: 'dont judge me',
+    date: 'some time in 20XX',
+    firstParagraph: 'go read the chrono trigger advetisements',
+    secondParagraph: 'idk what to write',
+    thirdParagraph: 'seriously'
   }
 ];
 
@@ -112,3 +119,42 @@ const data = [
   Step 5: Add a new article to the array. Make sure it is in the same format as the others. Refresh the page to see the new article.
 
 */
+
+function createComponent(h2, arrDate, p1, p2, p3) {
+  const article = document.createElement('div')
+  const title = document.createElement('h2')
+  const date = document.createElement('p')
+  const para1 = document.createElement('p')
+  const para2 = document.createElement('p')
+  const para3 = document.createElement('p')
+  const button = document.createElement('span')
+
+  article.appendChild(title)
+  article.appendChild(date)
+  article.appendChild(para1)
+  article.appendChild(para2)
+  article.appendChild(para3)
+  article.appendChild(button)
+
+  article.classList.add('article')
+  date.classList.add('date')
+  button.classList.add('expandButton')
+
+  button.textContent = '\u058D'
+  title.textContent = h2
+  date.textContent = arrDate
+  para1.textContent = p1
+  para2.textContent = p2
+  para3.textContent = p3
+
+  button.addEventListener('click', () => {
+    article.classList.toggle('article-open')
+  })
+
+  return article
+}
+
+const container = document.querySelector('.articles')
+data.map(arr => {
+  container.appendChild(createComponent(arr.title, arr.date, arr.firstParagraph, arr.secondParagraph, arr.thirdParagraph))
+})
